@@ -1,0 +1,524 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --serif:'Libre Baskerville',Georgia,serif;
+  --sans:'Source Sans 3',system-ui,sans-serif;
+  --navy:#1E3A4F;
+  --navy-dark:#142836;
+  --navy-mid:#254d66;
+  --navy-light:#2d6080;
+  --orange:#E8761A;
+  --orange-light:#FAE8D4;
+  --orange-dark:#c45f0e;
+  --teal:#1D9E75;
+  --teal-light:#E1F5EE;
+  --ink:#1a2e3d;
+  --ink2:#3d5566;
+  --ink3:#6b8299;
+  --rule:rgba(30,58,79,0.12);
+  --page:#F8F9FA;
+  --white:#ffffff;
+}
+body{font-family:var(--sans);background:var(--page);color:var(--ink);line-height:1.6;font-size:16px}
+
+/* NAV */
+nav{
+  background:var(--navy-dark);
+  padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+  position:sticky;top:0;z-index:100;
+}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-wrap img{height:38px;width:auto;display:block}
+.nav-links{display:flex;gap:1.75rem}
+.nav-links a{
+  font-size:12px;font-weight:600;color:rgba(255,255,255,0.65);
+  text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;
+}
+.nav-links a:hover{color:var(--orange)}
+.nav-cta{
+  background:var(--orange);color:white;
+  padding:9px 20px;border-radius:3px;
+  font-size:12px;font-weight:700;text-decoration:none;
+  letter-spacing:0.06em;text-transform:uppercase;
+}
+.nav-cta:hover{background:var(--orange-dark)}
+
+/* HERO */
+.hero{
+  position:relative;
+  min-height:420px;
+  display:flex;align-items:center;
+  overflow:hidden;
+  background:var(--navy-dark);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('Background_OHDSI.jpg');
+  background-size:cover;background-position:center;
+  opacity:0.35;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(20,40,54,0.97) 40%,rgba(20,40,54,0.6) 100%);
+}
+.hero-inner{position:relative;max-width:860px;margin:0 auto;padding:4rem 2rem;width:100%}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:1.25rem;
+}
+.hero-tag::before{content:'';display:block;width:24px;height:2px;background:var(--orange)}
+.hero h1{
+  font-family:var(--serif);
+  font-size:clamp(1.9rem,4.5vw,3rem);
+  font-weight:700;line-height:1.18;letter-spacing:-0.02em;
+  color:white;margin-bottom:1.1rem;
+}
+.hero h1 em{color:#f4a84a;font-style:italic}
+.hero p{
+  font-size:1.05rem;color:rgba(255,255,255,0.72);
+  max-width:560px;margin-bottom:2rem;
+  line-height:1.75;font-weight:300;
+}
+.hero-actions{display:flex;gap:0.75rem;flex-wrap:wrap}
+.btn-primary{
+  background:var(--orange);color:white;
+  padding:13px 28px;border-radius:3px;border:none;
+  font-family:var(--sans);font-size:13px;font-weight:700;
+  letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;
+  text-decoration:none;
+}
+.btn-primary:hover{background:var(--orange-dark)}
+.btn-ghost{
+  background:transparent;color:rgba(255,255,255,0.8);
+  padding:13px 28px;border-radius:3px;
+  border:1px solid rgba(255,255,255,0.25);
+  font-family:var(--sans);font-size:13px;font-weight:500;
+  letter-spacing:0.04em;cursor:pointer;text-decoration:none;
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.6);color:white}
+
+/* STRIP */
+.strip{
+  background:var(--navy);
+  color:rgba(255,255,255,0.75);
+  padding:1.1rem 2rem;
+  text-align:center;
+  font-size:13px;letter-spacing:0.01em;
+  border-bottom:2px solid var(--orange);
+}
+.strip strong{color:var(--orange);font-weight:700}
+.strip a{color:rgba(255,255,255,0.85);text-decoration:underline}
+
+/* SECTIONS */
+.section-wrap{padding:4rem 2rem;max-width:880px;margin:0 auto}
+.section-label{
+  font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:0.6rem;
+}
+h2{
+  font-family:var(--serif);
+  font-size:clamp(1.4rem,2.8vw,1.9rem);
+  font-weight:700;letter-spacing:-0.015em;
+  color:var(--ink);margin-bottom:0.9rem;line-height:1.25;
+}
+.lead{font-size:1rem;color:var(--ink2);line-height:1.8;max-width:640px;font-weight:300}
+.divider{border:none;border-top:1px solid var(--rule)}
+
+/* ABOUT */
+.two-col{display:grid;grid-template-columns:1.1fr 0.9fr;gap:3rem;align-items:start}
+@media(max-width:640px){.two-col{grid-template-columns:1fr}}
+
+/* FEATURE CARDS */
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-top:2rem}
+.feature-card{
+  background:var(--white);
+  border:1px solid var(--rule);
+  border-top:3px solid var(--orange);
+  border-radius:4px;
+  padding:1.5rem;
+}
+.feature-icon{
+  width:34px;height:34px;border-radius:3px;
+  background:var(--orange-light);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:0.9rem;
+}
+.feature-icon svg{width:17px;height:17px;stroke:var(--orange-dark);fill:none;stroke-width:2}
+.feature-card h3{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:0.35rem;letter-spacing:0.01em}
+.feature-card p{font-size:12.5px;color:var(--ink3);line-height:1.6}
+
+/* STEPS */
+.how-steps{margin-top:2rem}
+.step{display:flex;gap:1.5rem;padding:1.4rem 0;border-bottom:1px solid var(--rule)}
+.step:last-child{border-bottom:none}
+.step-num{
+  font-family:var(--serif);font-size:1.5rem;font-weight:700;
+  color:var(--orange);opacity:0.6;min-width:2.5rem;line-height:1;
+  padding-top:3px;
+}
+.step h3{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:0.25rem;letter-spacing:0.01em}
+.step p{font-size:13px;color:var(--ink2);line-height:1.7;font-weight:300}
+
+/* LANGUAGES */
+.lang-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:0.7rem;margin-top:1.5rem;
+}
+.lang-pill{
+  background:var(--white);border:1px solid var(--rule);
+  border-radius:3px;padding:0.65rem 1rem;
+  font-size:13px;color:var(--ink2);font-weight:500;
+  display:flex;align-items:center;justify-content:space-between;gap:0.5rem;
+}
+.lang-pill.prio{border-left:3px solid var(--orange)}
+.prio-badge{
+  font-size:9px;font-weight:700;letter-spacing:0.07em;
+  color:var(--orange-dark);background:var(--orange-light);
+  padding:2px 6px;border-radius:2px;text-transform:uppercase;white-space:nowrap;
+}
+
+/* ROLES */
+.roles-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-top:2rem}
+.role-cell{background:var(--white);padding:1.25rem 1.5rem}
+.role-cell h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:0.25rem}
+.role-cell p{font-size:12px;color:var(--ink3);line-height:1.6}
+@media(max-width:500px){.roles-grid{grid-template-columns:1fr}}
+
+/* FORM */
+.form-section{
+  background:var(--white);
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:2.5rem;
+  margin-top:2rem;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0}
+@media(max-width:560px){.form-row{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:1rem}
+label.field-label{font-size:11px;font-weight:700;color:var(--ink2);letter-spacing:0.07em;text-transform:uppercase}
+input[type=text],input[type=email],select,textarea{
+  border:1px solid rgba(30,58,79,0.2);
+  border-radius:3px;padding:9px 12px;
+  font-family:var(--sans);font-size:14px;color:var(--ink);
+  background:var(--page);outline:none;width:100%;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--navy);background:var(--white)}
+textarea{resize:vertical;min-height:75px}
+.checkbox-group{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.2rem}
+.checkbox-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--ink2);cursor:pointer;line-height:1.5}
+.checkbox-item input{margin-top:3px;accent-color:var(--orange)}
+.form-note{font-size:11.5px;color:var(--ink3);margin-top:1.5rem;line-height:1.65;padding-top:1rem;border-top:1px solid var(--rule)}
+.submit-row{display:flex;align-items:center;gap:1rem;margin-top:1.5rem;flex-wrap:wrap}
+.submit-btn{
+  background:var(--orange);color:white;
+  padding:12px 28px;border-radius:3px;border:none;
+  font-family:var(--sans);font-size:13px;font-weight:700;
+  letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;
+}
+.submit-btn:hover{background:var(--orange-dark)}
+.success-msg{
+  display:none;
+  background:var(--teal-light);
+  border-left:3px solid var(--teal);
+  border-radius:3px;
+  padding:1.1rem 1.4rem;
+  font-size:14px;color:#0a5240;margin-top:1rem;line-height:1.65;
+}
+
+/* FOOTER */
+footer{
+  background:var(--navy-dark);
+  color:rgba(255,255,255,0.5);
+  padding:2.5rem 2rem;
+  text-align:center;
+  font-size:12px;line-height:2;
+}
+.footer-logo{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  margin-bottom:1rem;
+}
+.footer-logo img{height:36px;width:auto;filter:brightness(0.85)}
+footer a{color:rgba(255,255,255,0.6)}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,0.08);margin:1rem auto;max-width:400px}
+</style>
+
+<nav>
+  <div class="logo-wrap">
+    <img src="oikolexis_logo.png" alt="OikoLexis">
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#how">How it works</a>
+    <a href="#languages">Languages</a>
+    <a href="#roles">Roles</a>
+  </div>
+  <a href="#register" class="nav-cta">Join as reviewer</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">OHDSI Community Project · Hasselt University</div>
+    <h1>Making <em>The Book of OHDSI</em><br>accessible in every language</h1>
+    <p>OikoLexis combines AI-powered machine translation with structured expert review — so that OHDSI knowledge reaches researchers and practitioners in their own language, without compromising scientific precision.</p>
+    <div class="hero-actions">
+      <a href="#register" class="btn-primary">Register as a reviewer</a>
+      <a href="#about" class="btn-ghost">Learn more</a>
+    </div>
+  </div>
+</div>
+
+<div class="strip">
+  <strong>Priority languages — Africa first:</strong> &nbsp;French · Portuguese · Arabic · Kiswahili &nbsp;·&nbsp; <a href="#languages">See all active languages →</a>
+</div>
+
+<div class="section-wrap" id="about">
+  <div class="section-label">About OikoLexis</div>
+  <div class="two-col">
+    <div>
+      <h2>A translation ecosystem, not just a tool</h2>
+      <p class="lead">OikoLexis was born from a concrete request by the OHDSI Africa community for accessible translations of <em>The Book of OHDSI</em>. It has since grown into a language-agnostic, community-governed platform that respects both scientific precision and the autonomy of local language communities.</p>
+    </div>
+    <div style="padding-top:0.25rem">
+      <p style="font-size:13.5px;color:var(--ink2);line-height:1.8;font-weight:300;margin-bottom:1rem">The project operates under the umbrella of the Research Group of Biomedical Data Sciences at Hasselt University (Belgium), in close collaboration with the global OHDSI network.</p>
+      <p style="font-size:13.5px;color:var(--ink2);line-height:1.8;font-weight:300"><strong style="font-weight:700;color:var(--navy)">Core principle:</strong> AI augments experts — humans always decide. Every machine translation passes through structured peer review by bilingual, OHDSI-knowledgeable community members.</p>
+    </div>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>AI-powered machine translation</h3>
+      <p>Multi-engine MT (GPT, DeepL, DeepSeek) with versioned prompts and transparent cost and quality metrics stored per job.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <h3>Structured expert review</h3>
+      <p>Role-bound workflow with defined reviewer levels, enforced state transitions, and full audit trails. No revision step can be skipped.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>Governance &amp; traceability</h3>
+      <p>Every decision, approval, and terminology choice is logged. GitHub stores text; PostgreSQL stores metadata and version history.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <h3>Language-agnostic by design</h3>
+      <p>Built on IETF language codes and open standards. Any language community can join without infrastructure lock-in.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section-wrap" id="how">
+  <div class="section-label">How it works</div>
+  <h2>From source text to trusted translation</h2>
+  <p class="lead">OikoLexis coordinates two phases: a preparative phase that structures the work, and a revision phase where community experts validate each translation unit.</p>
+
+  <div class="how-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div>
+        <h3>Machine translation &amp; chunking</h3>
+        <p>The Book of OHDSI (Markdown/Bookdown on GitHub) is split into deterministic revision chunks. Each chunk is machine-translated using the best available engine for the target language.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div>
+        <h3>Terminology governance</h3>
+        <p>Scientific and technical terms are extracted per chapter, defined in context, and validated by chapter authors before translation. This lexical foundation guides the MT and ensures consistency.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div>
+        <h3>Role-bound review workflow</h3>
+        <p>Language-specific work groups — co-managers, editors, reviewers, supervisors — are assigned through OikoLexis. Each task binds to a role and transitions follow an enforced, audited workflow.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div>
+        <h3>Bilingual revision matrix</h3>
+        <p>Reviewers work in a paired source/target revision interface. Changes are committed to GitHub with full version traceability. No step can be skipped or performed out of sequence.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">05</div>
+      <div>
+        <h3>Published, community-owned translation</h3>
+        <p>Approved translations are published under community governance — adding new languages, chapters, or reviewers requires no structural change to the platform.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section-wrap" id="languages">
+  <div class="section-label">Active languages</div>
+  <h2>Where we need you most</h2>
+  <p class="lead">The following languages are currently active or in preparation. Priority is given to the communities whose request originated this project.</p>
+
+  <div class="lang-grid">
+    <div class="lang-pill prio"><span>French</span><span class="prio-badge">Priority</span></div>
+    <div class="lang-pill prio"><span>Portuguese</span><span class="prio-badge">Priority</span></div>
+    <div class="lang-pill prio"><span>Arabic</span><span class="prio-badge">Priority</span></div>
+    <div class="lang-pill prio"><span>Kiswahili</span><span class="prio-badge">Priority</span></div>
+    <div class="lang-pill"><span>Vietnamese</span></div>
+    <div class="lang-pill"><span>Russian</span></div>
+    <div class="lang-pill"><span>Spanish</span></div>
+    <div class="lang-pill"><span>Polish</span></div>
+    <div class="lang-pill"><span>Ukrainian</span></div>
+  </div>
+  <p style="font-size:12.5px;color:var(--ink3);margin-top:1.1rem">Don't see your language? Register below — we will contact you when a work group is forming.</p>
+</div>
+
+<hr class="divider">
+
+<div class="section-wrap" id="roles">
+  <div class="section-label">Who we need</div>
+  <h2>Roles in a language work group</h2>
+  <p class="lead">The ideal reviewer is bilingual and has working knowledge of OHDSI concepts. Each role has a defined scope within the platform.</p>
+
+  <div class="roles-grid">
+    <div class="role-cell">
+      <h4>Co-manager / Co-editor</h4>
+      <p>Coordinates the work group, oversees planning, approves role assignments and progress milestones.</p>
+    </div>
+    <div class="role-cell">
+      <h4>Reviewer (levels 1–3)</h4>
+      <p>Reviews machine-translated chunks against the source. Must be bilingual and familiar with OHDSI methodology.</p>
+    </div>
+    <div class="role-cell">
+      <h4>Supervisor</h4>
+      <p>Provides final approval on contested sections; typically a senior OHDSI community member in the target language.</p>
+    </div>
+    <div class="role-cell">
+      <h4>Linguistic consultant</h4>
+      <p>Advises on terminology and nuance. OHDSI knowledge is not required — expert linguistic profile is sufficient.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section-wrap" id="register" style="padding-bottom:5rem">
+  <div class="section-label">Get involved</div>
+  <h2>Register as a contributor</h2>
+  <p class="lead">Fill in the form below to express your interest. We will contact you once your language group is ready — or sooner if your language is already active.</p>
+
+  <div class="form-section">
+    <div class="form-row">
+      <div class="field">
+        <label class="field-label" for="fname">First name</label>
+        <input type="text" id="fname" placeholder="e.g. Agnes">
+      </div>
+      <div class="field">
+        <label class="field-label" for="lname">Last name</label>
+        <input type="text" id="lname" placeholder="e.g. Mukamana">
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label" for="email">Email address</label>
+      <input type="email" id="email" placeholder="you@institution.org">
+    </div>
+    <div class="form-row">
+      <div class="field">
+        <label class="field-label" for="affil">Affiliation / institution</label>
+        <input type="text" id="affil" placeholder="University, hospital, NGO…">
+      </div>
+      <div class="field">
+        <label class="field-label" for="country">Country</label>
+        <input type="text" id="country" placeholder="e.g. Rwanda">
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label" for="lang">Target language(s) you can work in</label>
+      <input type="text" id="lang" placeholder="e.g. French, Kiswahili">
+    </div>
+    <div class="field">
+      <label class="field-label">Role preference (select all that apply)</label>
+      <div class="checkbox-group">
+        <label class="checkbox-item"><input type="checkbox"> Reviewer</label>
+        <label class="checkbox-item"><input type="checkbox"> Co-manager / Co-editor</label>
+        <label class="checkbox-item"><input type="checkbox"> Supervisor</label>
+        <label class="checkbox-item"><input type="checkbox"> Linguistic consultant</label>
+        <label class="checkbox-item"><input type="checkbox"> Unsure — please advise me</label>
+      </div>
+    </div>
+    <div class="field">
+      <label class="field-label" for="ohdsi">Your OHDSI background (brief)</label>
+      <textarea id="ohdsi" placeholder="e.g. I attended OHDSI Global 2024, work with CDM data at my institution…"></textarea>
+    </div>
+    <div class="field">
+      <label class="field-label" for="translation_test">Participate in a translation test?</label>
+      <select id="translation_test">
+        <option value="">— please select —</option>
+        <option>Yes, please include me</option>
+        <option>Not yet — contact me when the group starts</option>
+      </select>
+    </div>
+
+    <div class="submit-row">
+      <button class="submit-btn" onclick="submitForm()">Submit registration</button>
+      <span style="font-size:12px;color:var(--ink3)">We will respond within 2 weeks.</span>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      Thank you for registering! We have received your interest and will be in touch once your language group is ready to start — or sooner if your language is already active. Welcome to OikoLexis.
+    </div>
+
+    <p class="form-note">
+      OikoLexis is a voluntary, community-driven initiative under the umbrella of the Biomedical Data Sciences research group at Hasselt University. Your data is used solely for project coordination and will not be shared with third parties. The project is affiliated with OHDSI Europe.
+    </p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img src="oikolexis_logo.png" alt="OikoLexis — Translating Knowledge for Global Impact">
+  </div>
+  <p style="color:rgba(255,255,255,0.6);font-size:13px;font-style:italic;margin-bottom:0.5rem">"Translating Knowledge for Global Impact"</p>
+  <hr class="footer-divider">
+  <p>Research Group of Biomedical Data Sciences · Hasselt University · Belgium<br>
+  Principal investigator: Michel J.F. Walravens &nbsp;·&nbsp; Affiliated with OHDSI Europe</p>
+  <p style="margin-top:0.5rem;font-size:11px;opacity:0.4">Built to evolve without lock-in.</p>
+</footer>
+
+<script>
+function submitForm(){
+  const fname=document.getElementById('fname').value.trim();
+  const email=document.getElementById('email').value.trim();
+  if(!fname||!email){alert('Please fill in at least your name and email address.');return;}
+  document.getElementById('successMsg').style.display='block';
+  document.querySelector('.submit-row').style.opacity='0.4';
+  document.querySelector('.submit-btn').disabled=true;
+  document.getElementById('successMsg').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
